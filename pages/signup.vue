@@ -33,14 +33,14 @@
                             :rules="nicknameRules"
                             required
                         />
+                        <v-checkbox
+                            v-model="terms"
+                            required
+                            label="가입에 동의하십니까?"
+                            :rules="[v => !!v || '가입 동의해주세요.']"
+                        />
+                        <v-btn color="green" type="sumbit">가입하기</v-btn>
                     </v-form>
-                    <v-checkbox
-                        v-model="terms"
-                        required
-                        label="가입에 동의하십니까?"
-                        :rules="[v => !!v || '가입 동의해주세요.']"
-                    />
-                    <v-btn color="green" type="sumbit">가입하기</v-btn>
                 </v-container>
             </v-card>
         </v-container>
@@ -75,7 +75,15 @@ export default {
     },
     methods: {
         onSubmitForm() {
-            this.$refs.form.validate();
+            console.log("not ok");
+            if (this.$refs.form.validate()) {
+                console.log("ok");
+
+                this.$store.dispatch('users/signUp', {
+                    nickname: this.nickname,
+                    email: this.email
+                })
+            }
         }
     },
     head() {
