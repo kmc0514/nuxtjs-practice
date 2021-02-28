@@ -1,6 +1,5 @@
 <template>
     <v-container>
-        <post-form v-if="me"></post-form>
         <div>
             <!-- Vertualized List에 대해서 알아보기 (강의에서 안 알려줌) -->
             <post-card
@@ -13,8 +12,7 @@
 </template>
 
 <script>
-import PostForm from '../components/PostForm.vue'
-import PostCard from '../components/PostCard.vue'
+import PostCard from '~/components/PostCard.vue'
 
 export default {
     components: { PostCard, PostForm },

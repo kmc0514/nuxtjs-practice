@@ -1,9 +1,8 @@
 <template>
-    <v-card>
+    <v-card style="marin-bottom: 20px">
         <v-container>
             <v-form
                 ref="form"
-                v-model="valid"
                 @submit.prevent="onSubmitForm"
             >
                 <v-textarea
@@ -12,10 +11,10 @@
                     auto-grow
                     clearable
                     label="어떤 신기한 일이 있었나요?"
-                    :hide-details="hideDetails"
-                    :success-messages="successMessage"
+                    :hide-details="hideDetail"
+                    :success-messages="successMessages"
                     :success="success"
-                    :rules="[v > !!v.trim() || '내용을 입력하세요']"
+                    :rules="[v => !!v.trim() || '내용을 입력하세요']"
                     @input="onChangeTextarea"
                 >
                 </v-textarea>
@@ -24,8 +23,8 @@
                     color="green"
                     absolute right
                 >짹짹</v-btn>
+                <v-btn>이미지 업로드</v-btn>
             </v-form>
-            <v-btn>이미지 업로드</v-btn>
         </v-container>
     </v-card>
 </template>
@@ -34,6 +33,7 @@
 import { mapState } from 'vuex';
 
 export default {
+    name: 'post_form',
     data() {
         return {
             hideDetail: false,
@@ -43,13 +43,15 @@ export default {
         }
     },
     computed: {
-        ...mapState(['users/me'])
+        ...mapState('users', ['me'])
     },
     methods: {
-        onChangeTextarea() {
-            this.hideDetail = true;
-            this.success = false;
-            this.successMessages = '';
+        onChangeTextarea(value) {
+            if (value.length) {
+                this.hideDetail = true;
+                this.success = false;
+                this.successMessages = '';
+            }
         },
         onSubmitForm() {
             if (this.$refs.form.validate()) {
@@ -67,6 +69,7 @@ export default {
                     this.hideDetail = false;
                     this.success = true;
                     this.successMessages = "게시물 등록 성공!"
+                    this.content = ''
                 })
                 .catch(err => {
                     console.log(err);

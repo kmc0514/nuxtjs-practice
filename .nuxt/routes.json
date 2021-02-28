@@ -14,6 +14,27 @@
     "_name": "_d0127028"
   },
   {
+    "name": "hashtag-id",
+    "path": "/hashtag/:id",
+    "component": "C:\\\\Users\\\\developer\\\\Desktop\\\\node_practice\\\\ch1\\\\front\\\\pages\\\\hashtag\\\\_id\\\\index.vue",
+    "chunkName": "pages/hashtag/_id/index",
+    "_name": "_f08a0500"
+  },
+  {
+    "name": "post-id",
+    "path": "/post/:id",
+    "component": "C:\\\\Users\\\\developer\\\\Desktop\\\\node_practice\\\\ch1\\\\front\\\\pages\\\\post\\\\_id\\\\index.vue",
+    "chunkName": "pages/post/_id/index",
+    "_name": "_6c239368"
+  },
+  {
+    "name": "user-id",
+    "path": "/user/:id",
+    "component": "C:\\\\Users\\\\developer\\\\Desktop\\\\node_practice\\\\ch1\\\\front\\\\pages\\\\user\\\\_id\\\\index.vue",
+    "chunkName": "pages/user/_id/index",
+    "_name": "_2572d377"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "C:\\\\Users\\\\developer\\\\Desktop\\\\node_practice\\\\ch1\\\\front\\\\pages\\\\index.vue",
