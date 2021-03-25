@@ -89,13 +89,11 @@ export default {
     },
     methods: {
         onSubmitForm() {
-            console.log("not ok");
             if (this.$refs.form.validate()) {
-                console.log("ok");
-
                 this.$store.dispatch('users/signUp', {
                     nickname: this.nickname,
-                    email: this.email
+                    email: this.email,
+                    password: this.password
                 })
             }
         }

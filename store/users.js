@@ -67,14 +67,49 @@ export const mutations = {
 };
 
 export const actions = {
-    signUp({ commit }, payload) {
-        commit('setMe', payload);
+    async signUp({ commit }, payload) {
+        try {
+            const userData = await this.$axios.post('http://localhost:3085/user', {
+                email: payload.email,
+                nickname: payload.nickname,
+                password: payload.password
+            },
+            {
+                withCredentials: true
+            }); // REST API
+        } catch (err) {
+            console.log(err);
+        }
     },
-    logIn({ commit }, payload) {
-        commit('setMe', payload);
+    async logIn({ commit }, payload) {
+        try {
+            console.log(payload);
+            const userData = await this.$axios.post('http://localhost:3085/user/login', {
+                email: payload.email,
+                password: payload.password
+            },
+            {
+                withCredentials: true
+            }); // REST API
+
+            commit('setMe', userData.data);
+
+        } catch (err) {
+            console.log(err);
+        }
     },
-    logOut({ commit }, payload) {
-        commit('setMe', null);
+    async logOut({ commit }) {
+        try {
+            await this.$axios.post('http://localhost:3085/user/logout', {}, {
+
+                withCredentials: true
+            }); // REST API
+            
+            commit('setMe', null);
+
+        } catch (err) {
+            console.log(err);
+        }
     },
     changeNickname({ commit }, payload) {
         commit('changeNickname', payload);

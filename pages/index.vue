@@ -37,8 +37,12 @@ export default {
     fetch({ store }) {
         store.dispatch('posts/loadPosts');
     },
+    updated() {
+        console.log(this.mainPosts);
+    },
     mounted() {
         window.addEventListener('scroll', this.onScroll);
+        console.log(this.mainPosts);
     },
     beforeDestroy() {
         window.removeEventListener('scroll', this.onScroll);

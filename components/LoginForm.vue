@@ -6,11 +6,13 @@
                     <v-text-field
                         label="이메일"
                         type="email"
+                        v-model="email"
                         :rules="emailRules"
                         required
                     ></v-text-field>
                     <v-text-field
                         label="비밀번호"
+                        v-model="password"
                         :rules="passwordRules"
                         type="password"
                         required
@@ -55,7 +57,7 @@ export default {
             if (this.$refs.form.validate()) {
                 await this.$store.dispatch('users/logIn', {
                     email: this.email,
-                    nickname: "mitchell"
+                    password: this.password
                 });
 
                 this.$router.push({
