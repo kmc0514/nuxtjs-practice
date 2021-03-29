@@ -46,6 +46,9 @@ export default {
             hashtag: ''
         };
     },
+    fetch({ store }) {
+        store.dispatch('users/loadUser');
+    },
     methods: {
         onSearchHashtag() {
             this.$router.push({
@@ -54,7 +57,7 @@ export default {
 
             this.hashtag = '';
         }
-    }
+    },
 }
 </script>
 

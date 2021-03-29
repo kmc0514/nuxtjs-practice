@@ -14,8 +14,7 @@
             :success="success"
             :success-messages="successMessages"
             @input="onChangeTextarea"
-        >
-        </v-textarea>
+        ></v-textarea>
         <v-btn color="green" dark absolute top right type="submit">삐약</v-btn>
     </v-form>
 </template>
@@ -53,12 +52,8 @@ export default {
         onSubmitForm() {
             if (this.$refs.form.validate()) {
                 this.$store.dispatch('posts/addComment', {
-                    id: Date.now(),
                     postId: this.postId,
-                    content: this.value,
-                    User: {
-                        nickname: this.me.nickname
-                    }
+                    content: this.content,
                 })
                 .then(() => {
                     this.content = '';

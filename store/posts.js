@@ -18,30 +18,29 @@ export const mutations = {
     },
     removeMainPost(state, payload) {
         const index = state.mainPosts.findIndex( v => {
-            v.id === payload.id;
+            v.id === payload;
         });
         state.mainPosts.splice(index, 1);
     },
     addComment(state, payload) {
+        console.log(payload);
+        const index = state.mainPosts.findIndex( v => {
+            console.log(typeof v.id, typeof payload.PostId);
+            return v.id === payload.PostId;
+        });
+        console.log(index);
+        state.mainPosts[index].Comments.unshift(payload);
+    },
+    loadComments(state, payload) {
+        console.log(payload);
         const index = state.mainPosts.findIndex( v => {
             v.id === payload.postId;
         });
-        state.mainPosts[index].Comments.unshift(payload);
+        state.mainPosts[index].Comments = payload;
     },
-    loadPosts(state) {
-        const diff = totalPosts - state.mainPosts.length; // 아직 안 불러온 게시글 수
-        const fakePosts = Array(diff > limit ? limit : diff).fill().map(v => ({
-            id: Math.random().toString(),
-            User: {
-                id: 1,
-                nickname: '김명철'
-            },
-            content: 'asdlfjn sldfk sf woipmpdf owpfl ',
-            Comments: [],
-            Images: []
-        }));
-        state.mainPosts = state.mainPosts.concat(fakePosts);
-        state.hasMorePost = fakePosts.length === limit;
+    loadPosts(state, payload) {
+        state.mainPosts = state.mainPosts.concat(payload);
+        state.hasMorePost = payload.length === limit;
     },
     concatImagePaths(state, payload) {
         state.imagePaths = state.imagePaths.concat(payload);
@@ -65,14 +64,47 @@ export const actions = {
             console.log(err);
         }
     },
-    remove({ commit }, payload) {
-        commit('removeMainPost', payload);
+    async remove({ commit }, payload) {
+        try {
+            this.$axios.delete(`http://localhost:3085/post/${payload.postId}`,{
+                withCredentials: true
+            });
+            commit('removeMainPost', payload.postId);
+        } catch (error) {
+            console.error(error);
+        }
     },
-    addComment({ commit }, payload) {
-        commit('addComment', payload);
+    async addComment({ commit }, payload) {
+        try {
+            const comment = await this.$axios.post(`http://localhost:3085/post/${payload.postId}/comment`,
+            {
+                content: payload.content
+            },
+            {
+                withCredentials: true
+            });
+            commit('addComment', comment.data);
+        } catch (err) {
+            console.error(err);
+        }
     },
-    loadPosts({ commit, state }, payload) {
-        commit('loadPosts')
+    async loadComments({commit}, payload) {
+        try {
+            const comment = await this.$axios.get(`http://localhost:3085/post/${payload.postId}/comments`);
+            commit('loadComments', comment);
+        } catch (error) {
+            console.error(error);
+        }
+    },
+    async loadPosts({ commit, state }, payload) {
+        if (state.hasMorePost) {
+            try {                
+                const posts = await this.$axios.get(`http://localhost:3085/posts?offset=${state.mainPosts.length}&limit=10`)
+                commit('loadPosts', posts.data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
     },
     async uploadImages({ commit }, payload) {
         try {
