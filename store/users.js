@@ -68,14 +68,14 @@ export const mutations = {
 
 export const actions = {
     async loadUser({ commit }) {
-        const res = await this.$axios.get('http://localhost:3085/user', {
+        const res = await this.$axios.get('/user', {
             withCredentials: true
         })
         commit('setMe', res.data);
     },
     async signUp({ commit }, payload) {
         try {
-            const userData = await this.$axios.post('http://localhost:3085/user', {
+            const userData = await this.$axios.post('/user', {
                 email: payload.email,
                 nickname: payload.nickname,
                 password: payload.password
@@ -90,7 +90,7 @@ export const actions = {
     async logIn({ commit }, payload) {
         try {
             console.log(payload);
-            const userData = await this.$axios.post('http://localhost:3085/user/login', {
+            const userData = await this.$axios.post('/user/login', {
                 email: payload.email,
                 password: payload.password
             },
@@ -106,7 +106,7 @@ export const actions = {
     },
     async logOut({ commit }) {
         try {
-            await this.$axios.post('http://localhost:3085/user/logout', {}, {
+            await this.$axios.post('/user/logout', {}, {
 
                 withCredentials: true
             }); // REST API

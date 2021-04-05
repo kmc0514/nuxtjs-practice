@@ -53,7 +53,7 @@ export const mutations = {
 export const actions = {
     async add({ commit, state }, payload) {
         try {
-            const res = await this.$axios.post('http://localhost:3085/post', {
+            const res = await this.$axios.post('/post', {
                 content: payload.content,
                 imagePaths: state.imagePaths    
             },{
@@ -66,7 +66,7 @@ export const actions = {
     },
     async remove({ commit }, payload) {
         try {
-            this.$axios.delete(`http://localhost:3085/post/${payload.postId}`,{
+            this.$axios.delete(`/post/${payload.postId}`,{
                 withCredentials: true
             });
             commit('removeMainPost', payload.postId);
@@ -76,7 +76,7 @@ export const actions = {
     },
     async addComment({ commit }, payload) {
         try {
-            const comment = await this.$axios.post(`http://localhost:3085/post/${payload.postId}/comment`,
+            const comment = await this.$axios.post(`/post/${payload.postId}/comment`,
             {
                 content: payload.content
             },
@@ -90,7 +90,7 @@ export const actions = {
     },
     async loadComments({commit}, payload) {
         try {
-            const comment = await this.$axios.get(`http://localhost:3085/post/${payload.postId}/comments`);
+            const comment = await this.$axios.get(`/post/${payload.postId}/comments`);
             commit('loadComments', comment);
         } catch (error) {
             console.error(error);
@@ -99,7 +99,7 @@ export const actions = {
     async loadPosts({ commit, state }, payload) {
         if (state.hasMorePost) {
             try {                
-                const posts = await this.$axios.get(`http://localhost:3085/posts?offset=${state.mainPosts.length}&limit=10`)
+                const posts = await this.$axios.get(`/posts?offset=${state.mainPosts.length}&limit=10`)
                 commit('loadPosts', posts.data);
             } catch (error) {
                 console.error(error);
@@ -108,7 +108,7 @@ export const actions = {
     },
     async uploadImages({ commit }, payload) {
         try {
-            const imgPath = await this.$axios.post('http://localhost:3085/post/images', payload, {
+            const imgPath = await this.$axios.post('/post/images', payload, {
                 withCredentials: true
             });
             commit('concatImagePaths', imgPath.data);

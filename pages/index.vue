@@ -35,7 +35,10 @@ export default {
         }
     },
     fetch({ store }) {
-        store.dispatch('posts/loadPosts');
+        return store.dispatch('posts/loadPosts');
+    },
+    asyncData() {
+        return {};
     },
     updated() {
         console.log(this.mainPosts);
