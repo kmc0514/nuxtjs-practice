@@ -2,43 +2,37 @@
   {
     "name": "profile",
     "path": "/profile",
-    "component": "C:\\\\Users\\\\pc3\\\\Desktop\\\\practice\\\\nuxt\\\\nuxtjs-practice\\\\pages\\\\profile.vue",
-    "chunkName": "pages/profile",
-    "_name": "_34cc1738"
+    "component": "C:\\\\Users\\\\developer\\\\Desktop\\\\node_practice\\\\ch1\\\\front\\\\pages\\\\profile.vue",
+    "chunkName": "pages/profile"
   },
   {
     "name": "signup",
     "path": "/signup",
-    "component": "C:\\\\Users\\\\pc3\\\\Desktop\\\\practice\\\\nuxt\\\\nuxtjs-practice\\\\pages\\\\signup.vue",
-    "chunkName": "pages/signup",
-    "_name": "_2a9f82ad"
+    "component": "C:\\\\Users\\\\developer\\\\Desktop\\\\node_practice\\\\ch1\\\\front\\\\pages\\\\signup.vue",
+    "chunkName": "pages/signup"
   },
   {
     "name": "hashtag-id",
     "path": "/hashtag/:id",
-    "component": "C:\\\\Users\\\\pc3\\\\Desktop\\\\practice\\\\nuxt\\\\nuxtjs-practice\\\\pages\\\\hashtag\\\\_id\\\\index.vue",
-    "chunkName": "pages/hashtag/_id/index",
-    "_name": "_1a74f742"
+    "component": "C:\\\\Users\\\\developer\\\\Desktop\\\\node_practice\\\\ch1\\\\front\\\\pages\\\\hashtag\\\\_id\\\\index.vue",
+    "chunkName": "pages/hashtag/_id/index"
   },
   {
     "name": "post-id",
     "path": "/post/:id",
-    "component": "C:\\\\Users\\\\pc3\\\\Desktop\\\\practice\\\\nuxt\\\\nuxtjs-practice\\\\pages\\\\post\\\\_id\\\\index.vue",
-    "chunkName": "pages/post/_id/index",
-    "_name": "_d63d9866"
+    "component": "C:\\\\Users\\\\developer\\\\Desktop\\\\node_practice\\\\ch1\\\\front\\\\pages\\\\post\\\\_id\\\\index.vue",
+    "chunkName": "pages/post/_id/index"
   },
   {
     "name": "user-id",
     "path": "/user/:id",
-    "component": "C:\\\\Users\\\\pc3\\\\Desktop\\\\practice\\\\nuxt\\\\nuxtjs-practice\\\\pages\\\\user\\\\_id\\\\index.vue",
-    "chunkName": "pages/user/_id/index",
-    "_name": "_1f345e10"
+    "component": "C:\\\\Users\\\\developer\\\\Desktop\\\\node_practice\\\\ch1\\\\front\\\\pages\\\\user\\\\_id\\\\index.vue",
+    "chunkName": "pages/user/_id/index"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "C:\\\\Users\\\\pc3\\\\Desktop\\\\practice\\\\nuxt\\\\nuxtjs-practice\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_1c7ba3cd"
+    "component": "C:\\\\Users\\\\developer\\\\Desktop\\\\node_practice\\\\ch1\\\\front\\\\pages\\\\index.vue",
+    "chunkName": "pages/index"
   }
 ]
