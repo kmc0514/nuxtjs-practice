@@ -77,8 +77,8 @@ export default {
         })
     },
     fetch({ store }) {
-        store.dispatch('users/loadFollowings');
-        return store.dispatch('users/loadFollowers');
+        store.dispatch('users/loadFollowings', { offset: 0 });
+        return store.dispatch('users/loadFollowers', {offset: 0});
     },
     methods: {
         onChangeNickname() {
@@ -86,14 +86,14 @@ export default {
                 nickname: this.nickname
             })
         },
-        removeFollowing(id) {
+        removeFollowing(userId) {
             this.$store.dispatch('users/removeFollowing', {
-                id 
+                userId
             });
         },
-        removeFollower(id) {
+        removeFollower(userId) {
             this.$store.dispatch('users/removeFollower', {
-                id 
+                userId 
             });
         },
         loadMoreFollwing() {

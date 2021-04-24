@@ -25,8 +25,15 @@
     </v-container>
     <v-container v-else>
         <v-card>
-            {{ me.nickname }} 로그인되었습니다
-            <v-btn @click="onLogOut">로그아웃</v-btn>
+            <v-container>
+                {{ me.nickname }} 로그인되었습니다
+                <v-btn @click="onLogOut">로그아웃</v-btn>
+            </v-container>
+            <v-row>
+                <v-col cols="4">{{ me.Followings.length }}</v-col>
+                <v-col cols="4">{{ me.Followers.length }}</v-col>
+                <v-col cols="4">{{ me.Posts.length }}</v-col>
+            </v-row>
         </v-card>
     </v-container>
 </template>

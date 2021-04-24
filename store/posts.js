@@ -136,6 +136,7 @@ export const actions = {
             commit('addMainPost', res.data);
         } catch (error) {
             console.log(error);
+            alert(error.response.data);
         }
     },
     async likePost({ commit }, payload) {
